@@ -49,4 +49,18 @@ public class PageObjectsPracticeFormTests extends TestBase {
                 .checkResult("Mobile", "9001122999");
 
     }
+
+    @Test
+    void negativeRegistrationTest() {
+        registrationPage.openPage()
+                .setFirstName("Aleksandr")
+                .setGender("Male")
+                .setUserNumber("9001122999")
+                .submit()
+                .checkBorderColor();
+
+
+    }
 }
+
+

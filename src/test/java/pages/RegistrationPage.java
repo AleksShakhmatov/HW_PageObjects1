@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -124,4 +124,9 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage checkBorderColor() {
+        lastNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+
+        return this;
+    }
 }
