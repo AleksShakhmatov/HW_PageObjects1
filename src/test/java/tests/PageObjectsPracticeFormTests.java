@@ -44,8 +44,9 @@ public class PageObjectsPracticeFormTests extends TestBase {
                 .setLastName("Exile")
                 .setGender("Male")
                 .setUserNumber("9001122999")
-                .submit()
-                .checkResult("Student Name", "Aleksandr Exile")
+                .submit();
+
+        registrationPage.checkResult("Student Name", "Aleksandr Exile")
                 .checkResult("Gender", "Male")
                 .checkResult("Mobile", "9001122999");
 
