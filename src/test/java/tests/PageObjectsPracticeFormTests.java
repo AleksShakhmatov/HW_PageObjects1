@@ -58,8 +58,9 @@ public class PageObjectsPracticeFormTests extends TestBase {
                 .setFirstName("Aleksandr")
                 .setGender("Male")
                 .setUserNumber("9001122999")
-                .submit()
-                .noResult();
+                .submit();
+
+        registrationPage.noResult();
 
 
     }
