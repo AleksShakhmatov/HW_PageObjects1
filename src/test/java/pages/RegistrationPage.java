@@ -2,14 +2,14 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.CheckResultComponent;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.cssValue;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
@@ -21,10 +21,12 @@ public class RegistrationPage {
             currentAddressInput = $("#currentAddress"),
             stateWrapperInput = $("#stateCity-wrapper"),
             cityWrapperInput = $("#stateCity-wrapper"),
-            submitButton = $("#submit");
+            submitButton = $("#submit"),
+            resultTable = $(".table-responsive");
 
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    CheckResultComponent checkResultComponent = new CheckResultComponent();
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -119,14 +121,13 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent()
-                .shouldHave(text(value));
-        return this;
-    }
-
-    public RegistrationPage checkBorderColor() {
-        lastNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        checkResultComponent.checkResult(key, value);
 
         return this;
     }
+
+    public void noResult() {
+        resultTable.shouldNotBe(visible);
+    }
+
 }

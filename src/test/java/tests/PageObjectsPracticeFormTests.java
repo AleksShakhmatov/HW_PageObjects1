@@ -15,19 +15,20 @@ public class PageObjectsPracticeFormTests extends TestBase {
                 .setEmail("AleksandrExile@gmail.com")
                 .setGender("Male")
                 .setUserNumber("9001122999")
-                .setDateOfBirth("30", "July", "2008")
+                .setDateOfBirth("30", "June", "2008")
                 .setSubjectsInput("Arts")
                 .setHobbiesWrapperInput("Sports")
                 .setUploadPictureInput("9.png")
                 .setCurrentAddress("www.Leningrad.spb.ru")
                 .setStateWrapper("Rajasthan")
                 .setCityWrapper("Jaipur")
-                .submit()
-                .checkResult("Student Name", "Aleksandr Exile")
+                .submit();
+
+        registrationPage.checkResult("Student Name", "Aleksandr Exile")
                 .checkResult("Student Email", "AleksandrExile@gmail.com")
                 .checkResult("Gender", "Male")
                 .checkResult("Mobile", "900112299")
-                .checkResult("Date of Birth", "30 July,2008")
+                .checkResult("Date of Birth", "30 June,2008")
                 .checkResult("Subjects", "Arts")
                 .checkResult("Hobbies", "Sports")
                 .checkResult("Picture", "9.png")
@@ -57,7 +58,7 @@ public class PageObjectsPracticeFormTests extends TestBase {
                 .setGender("Male")
                 .setUserNumber("9001122999")
                 .submit()
-                .checkBorderColor();
+                .noResult();
 
 
     }
